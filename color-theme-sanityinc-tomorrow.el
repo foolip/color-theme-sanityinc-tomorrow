@@ -50,9 +50,9 @@
 ;;; Code:
 
 (defconst color-theme-sanityinc-tomorrow-colors
-  '((night . ((background . "#202020") ;; midpoint between #181818 and #2828282
-              (current-line . "#383838")
-              (selection . "#585858")
+  '((night . ((background . "#181818")
+              (current-line . "#282828")
+              (selection . "#383838")
               (foreground . "#d8d8d8")
               (comment . "#b8b8b8")
               (red . "#ab4642")
