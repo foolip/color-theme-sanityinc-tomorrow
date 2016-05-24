@@ -172,10 +172,11 @@ names to which it refers are bound."
 
       ;; Flycheck
       (flycheck-error (:underline (:style wave :color ,red)))
+      (flycheck-info (:underline (:style wave :color ,aqua)))
       (flycheck-warning (:underline (:style wave :color ,orange)))
-      (flycheck-fringe-error (:foreground ,background :background ,red))
-      (flycheck-fringe-info (:foreground ,background :background ,yellow))
-      (flycheck-fringe-warning (:foreground ,background :background ,orange))
+      (flycheck-fringe-error (:foreground ,red))
+      (flycheck-fringe-info (:foreground ,aqua))
+      (flycheck-fringe-warning (:foreground ,orange))
 
       ;; Flymake
       (flymake-warnline (:underline (:style wave :color ,orange) :background ,background))
@@ -252,39 +253,37 @@ names to which it refers are bound."
 
       ;; Emacs interface
       (cursor (:background ,red))
-      (fringe (:background ,contrast-bg))
-      (linum (:background ,contrast-bg :foreground ,green :italic nil))
-      (vertical-border (:foreground ,highlight))
-      (border (:background ,contrast-bg :foreground ,contrast-bg))
+      (fringe (:background ,background :foreground ,comment))
+      (linum (:background ,background :foreground ,comment :italic nil :underline nil))
+      (vertical-border (:foreground ,contrast-bg))
+      (border (:background ,contrast-bg :foreground ,highlight))
       (border-glyph (nil))
       (highlight (:inverse-video nil :background ,highlight))
       (gui-element (:background ,contrast-bg :foreground ,foreground))
-      (mode-line (:foreground nil :background ,contrast-bg :weight normal
-                              :box (:line-width 1 :color ,comment)))
+      (mode-line (:foreground ,foreground :background ,contrast-bg :weight normal))
       (mode-line-buffer-id (:foreground ,purple :background nil))
       (mode-line-inactive (:inherit mode-line
                                     :foreground ,comment
-                                    :background ,contrast-bg :weight normal
-                                    :box (:line-width 1 :color ,contrast-bg)))
+                                    :background ,highlight :weight normal))
       (mode-line-emphasis (:foreground ,foreground :slant italic))
       (mode-line-highlight (:foreground ,purple :box nil :weight bold))
       (minibuffer-prompt (:foreground ,blue))
       (region (:background ,contrast-bg :inverse-video nil))
       (secondary-selection (:background ,highlight))
 
-      (header-line (:inherit mode-line :foreground ,purple :background nil))
+      (header-line (:inherit mode-line-inactive :foreground ,aqua :background nil))
 
-      (trailing-whitespace (:background ,red :foreground ,yellow))
-      (whitespace-empty (:foreground ,red :background ,yellow))
+      (trailing-whitespace (:background ,orange :foreground ,yellow))
+      (whitespace-empty (:foreground ,orange :background ,yellow))
       (whitespace-hspace (:background ,contrast-bg :foreground ,comment))
       (whitespace-indentation (:background ,contrast-bg :foreground ,comment))
-      (whitespace-line (:background ,contrast-bg :foreground ,red))
+      (whitespace-line (:background ,contrast-bg :foreground ,orange))
       (whitespace-newline (:background ,contrast-bg :foreground ,comment))
       (whitespace-space (:background ,contrast-bg :foreground ,comment))
       (whitespace-space-after-tab (:background ,contrast-bg :foreground ,yellow))
-      (whitespace-space-before-tab (:background ,contrast-bg :foreground ,red))
+      (whitespace-space-before-tab (:background ,contrast-bg :foreground ,orange))
       (whitespace-tab (:background ,contrast-bg :foreground ,comment))
-      (whitespace-trailing (:background ,contrast-bg :foreground ,red))
+      (whitespace-trailing (:background ,contrast-bg :foreground ,orange))
 
       ;; Parenthesis matching (built-in)
       (show-paren-match (:background ,purple :foreground ,background))
@@ -324,7 +323,7 @@ names to which it refers are bound."
       (diff-hl-insert (:background ,green))
       (diff-hl-change (:background ,blue))
       (diff-hl-delete (:background ,orange))
-      (diff-hl-unknown :background ,purple)
+      (diff-hl-unknown (:background ,purple))
 
       (ediff-even-diff-A (:foreground nil :background nil :inverse-video t))
       (ediff-even-diff-B (:foreground nil :background nil :inverse-video t))
@@ -450,7 +449,7 @@ names to which it refers are bound."
       (helm-source-header (:weight bold :foreground ,orange :height 1.44))
 
       ;; company
-      (company-preview (:foreground ,comment))
+      (company-preview (:foreground ,comment :background ,contrast-bg))
       (company-preview-common (:inherit company-preview :foreground ,red))
       (company-preview-search (:inherit company-preview :foreground ,blue))
       (company-tooltip (:background ,contrast-bg))
@@ -517,6 +516,16 @@ names to which it refers are bound."
       (js2-function-param (:foreground ,blue))
       (js2-instance-member (:foreground ,blue))
       (js2-private-function-call (:foreground ,red))
+      ;; js2-mode additional attributes for better syntax highlight in javascript
+      (js2-jsdoc-tag (:foreground ,aqua))
+      (js2-jsdoc-type (:foreground ,orange))
+      (js2-jsdoc-value (:foreground ,orange))
+      (js2-function-call (:foreground ,green))
+      (js2-object-property (:foreground ,orange))
+      (js2-private-member (:foreground ,purple))
+      (js2-jsdoc-html-tag-name (:foreground ,orange))
+      (js2-jsdoc-html-tag-delimiter (:foreground ,orange))
+
 
       ;; js3-mode
       (js3-warning-face (:underline ,orange))
@@ -742,6 +751,28 @@ names to which it refers are bound."
       (term-color-magenta (:foreground ,purple :background ,purple))
       (term-color-cyan    (:foreground ,aqua :background ,aqua))
       (term-color-white   (:foreground ,background :background ,background))
+
+      ;; e2wm
+      (e2wm:face-history-list-normal (:foreground ,foreground :background ,background))
+      (e2wm:face-history-list-select1 (:foreground ,aqua :background ,background))
+      (e2wm:face-history-list-select2 (:foreground ,yellow :background ,background))
+
+      ;; rpm-spec-mode
+      (rpm-spec-dir-face (:foreground ,green))
+      (rpm-spec-doc-face (:foreground ,green))
+      (rpm-spec-ghost-face (:foreground ,red))
+      (rpm-spec-macro-face (:foreground ,yellow))
+      (rpm-spec-obsolete-tag-face (:foreground ,red))
+      (rpm-spec-package-face (:foreground ,red))
+      (rpm-spec-section-face (:foreground ,yellow))
+      (rpm-spec-tag-face (:foreground ,blue))
+      (rpm-spec-var-face (:foreground ,red))
+
+      ;; sx
+      (sx-question-mode-content-face (:background ,highlight))
+      (sx-question-list-answers (:height 1.0 :inherit sx-question-list-parent :foreground ,green))
+      (sx-question-mode-accepted (:height 1.5 :inherit sx-question-mode-title :foreground ,green))
+      (sx-question-mode-kbd-tag (:height 0.9 :weight semi-bold :box (:line-width 3 :style released-button :color ,contrast-bg)))
       ))))
 
 (defmacro color-theme-sanityinc-tomorrow--frame-parameter-specs ()
@@ -797,7 +828,7 @@ are bound."
              (360 . ,green)))
          `(vc-annotate-very-old-color nil)
          `(vc-annotate-background nil)
-         `(ansi-color-names-vector (vector ,foreground ,red ,green ,yellow ,blue ,purple ,aqua ,background))
+         `(ansi-color-names-vector (vector ,foreground ,red ,green ,yellow ,blue ,purple ,aqua ,contrast-bg))
          '(ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])
          ))
        (provide-theme ',name))))
@@ -821,7 +852,7 @@ are bound."
           ,@(color-theme-sanityinc-tomorrow--frame-parameter-specs)
           ,@(color-theme-sanityinc-tomorrow--face-specs)))
        ;; ansi-color - comint and other modes that handle terminal color escape sequences
-       (setq ansi-color-names-vector (vector foreground red green yellow blue purple aqua background))
+       (setq ansi-color-names-vector (vector foreground red green yellow blue purple aqua contrast-bg))
        (setq ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])))))
 
 ;;;###autoload
